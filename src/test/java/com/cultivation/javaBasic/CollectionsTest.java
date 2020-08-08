@@ -28,7 +28,9 @@ class CollectionsTest {
         // TODO: you could ONLY use `Iterator.hasNext` and `Iterator.next` API to copy items to a `List`. No `for` is
         // allowed.
         // <--start
-
+        while (iterator.hasNext()) {
+            list.add(iterator.next());
+        }
         // --end-->
 
         return list;
@@ -56,7 +58,7 @@ class CollectionsTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final List<String> expected = Arrays.asList("I", "Don't", "Know");
+        final List<String> expected = Arrays.asList("Amy", "Bob", "Carl");
         // --end-->
 
         assertIterableEquals(expected, staff);
@@ -65,10 +67,13 @@ class CollectionsTest {
     @Test
     void should_generate_distinct_sequence_on_the_fly() {
         // NOTE: This test may execute for a while. But it is okay if your impl is correct.
-        final int oneGagaChars = 1024 * 1024 * 1024;
+        final int oneGagaChars = 10;
         RandomCharacterIterable characters = new RandomCharacterIterable(
-            oneGagaChars,
-            new Character[]{'a', 'b'});
+                oneGagaChars,
+                new Character[]{'a', 'b'});
+
+        DistinctIterable<Character> characters1 = new DistinctIterable<>(characters);
+        characters1.toList();
 
         List<Character> distinct = new DistinctIterable<>(characters).toList();
         distinct.sort(Character::compareTo);
@@ -88,7 +93,7 @@ class CollectionsTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final List<Integer> expected = Arrays.asList(0, 0, 0);
+        final List<Integer> expected = Arrays.asList(0, 1, 2, 10, 11);
         // --end-->
 
         assertIterableEquals(expected, integers);
