@@ -1,7 +1,5 @@
 package com.cultivation.javaBasic.showYourIntelligence;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.*;
 
 public class DistinctIterable<T> implements Iterable<T> {
@@ -28,13 +26,12 @@ class DistinctIterator<E> implements Iterator<E> {
     // <--start
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final Iterator<E> iterator;
-    private List<E> elementData = new ArrayList<>();
+    private Set<E> elementData = new TreeSet<>();
 
     DistinctIterator(Iterator<E> iterator) {
         while (iterator.hasNext()) {
             E item = iterator.next();
-            if (!elementData.contains(item))
-                elementData.add(item);
+            elementData.add(item);
         }
         this.iterator = elementData.iterator();
     }

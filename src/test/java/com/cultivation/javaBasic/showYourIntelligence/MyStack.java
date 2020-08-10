@@ -38,9 +38,7 @@ public class MyStack {
         // TODO: You SHOULD NOT USE COLLECTIONS OTHER THAN ARRAY.
         // <--start
         int[] newStorage = new int[newCapacity];
-        for (int i = 0; i < storage.length; i++) {
-            newStorage[i] = storage[i];
-        }
+        System.arraycopy(storage, 0, newStorage, 0, storage.length);
         this.storage = newStorage;
         this.capacity = newCapacity;
         // --end-->
